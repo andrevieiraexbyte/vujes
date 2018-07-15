@@ -1,0 +1,36 @@
+<template>
+    <div id="app" class="container">
+        <h1>{{titulo}}</h1>
+        <button @click.stop.prevent="getApi()" class="btn btn-primary">Pesquisar</button>
+          
+       
+   </div>
+</template>
+
+<script>
+
+
+export default {
+  name: 'app',
+  data() {
+    return {
+      titulo: "Ordens de serviço",
+      dados: [],
+      options: {
+        url: "/upload"
+      }
+    };
+  },
+  methods: {
+    getApi() {
+      var url = "http://jsonplaceholder.typicode.com/users";
+      this.$http.get(url).then(function(response) {
+        this.dados = response.body;
+      });
+    }
+  }
+};
+</script>
+
+<style>
+</style>
